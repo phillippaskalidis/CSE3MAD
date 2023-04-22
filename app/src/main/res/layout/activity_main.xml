@@ -21,6 +21,16 @@
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="422dp" />
+        tools:layout_editor_absoluteY="469dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="393dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
