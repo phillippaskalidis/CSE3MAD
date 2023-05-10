@@ -1,4 +1,4 @@
-package com.example.cse3mad;
+package com.example.testing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
