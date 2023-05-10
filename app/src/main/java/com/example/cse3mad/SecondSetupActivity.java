@@ -1,4 +1,6 @@
 package com.example.cse3mad;
 
-public class SecondSetupActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondSetupActivity extends AppCompatActivity {
 }
