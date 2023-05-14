@@ -25,6 +25,7 @@ public class UpdateCalorie extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+
                 //Toast will let the user know when the changes have been updated
                 Toast.makeText(UpdateCalorie.this, " Calories updated! ", Toast.LENGTH_SHORT).show();
             }
