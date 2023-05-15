@@ -7,8 +7,16 @@
     <string name="next">Next</string>
     <string name="Done">Done</string>
     <string name="Cancel">Cancel</string>
+    <string name="Protein">Protein</string>
     <string name="previous">Previous</string>
-
+    <string name="InputIntHint"> 00 </string>
+    <string name="Calories"> Calories </string>
+    <string name="CaloriesUpdate"> Calories Update </string>
+    <string name="TotalCaloTxt"> Total Calories  </string>
+    <string name="FatTxt"> Fat  </string>
+    <string name="ProteinTxt"> Protein </string>
+    <string name="CarbsTxt"> Carbs  </string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Percentage">%</string>
 </resources>
