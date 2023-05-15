@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C1B1B"
+    android:background="@color/backgroundBlack"
     tools:context=".UpdateCalorie">
 
     <Button
@@ -41,6 +41,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="35dp"
+        android:autofillHints=""
         android:background="@drawable/round_corner"
         android:backgroundTint="#30302F"
         android:ems="10"
@@ -50,8 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvCarbs"
-        app:layout_constraintTop_toBottomOf="@+id/eTFat"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/eTFat" />
 
     <EditText
         android:id="@+id/eTProtein"
@@ -60,6 +60,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="5dp"
+        android:autofillHints=""
         android:background="@drawable/round_corner"
         android:backgroundTint="#30302F"
         android:ems="10"
@@ -69,8 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvProtein"
-        app:layout_constraintTop_toBottomOf="@+id/eTTotalCal"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/eTTotalCal" />
 
     <EditText
         android:id="@+id/eTFat"
@@ -79,6 +79,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="5dp"
+        android:autofillHints=""
         android:background="@drawable/round_corner"
         android:backgroundTint="#30302F"
         android:ems="10"
@@ -88,8 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvFat"
-        app:layout_constraintTop_toBottomOf="@+id/eTProtein"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/eTProtein" />
 
     <EditText
         android:id="@+id/eTTotalCal"
@@ -98,6 +98,7 @@
         android:layout_marginTop="255dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="5dp"
+        android:autofillHints=""
         android:background="@drawable/round_corner"
         android:backgroundTint="#30302F"
         android:ems="10"
@@ -109,8 +110,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvTotalCal"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/TvTotalCal"
@@ -151,7 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="55dp"
-        android:text= "@string/FatTxt"
+        android:text="@string/FatTxt"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -176,7 +176,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/TvCalories"
         android:layout_width="119dp"
         android:layout_height="40dp"
         android:layout_marginStart="44dp"
@@ -195,7 +195,7 @@
         app:layout_constraintVertical_bias="0.487" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/TvProgressBar"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginTop="80dp"
@@ -217,14 +217,14 @@
         android:layout_height="20dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="80dp"
+        android:background="@drawable/round_corner"
         android:backgroundTint="@color/DarkGrey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:indeterminateTint="@color/buttonGrey"
-        android:background="@drawable/round_corner"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/TvCaloriesUpdate"
         android:layout_width="109dp"
         android:layout_height="136dp"
         android:layout_marginStart="30dp"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="backroundBlack">#1C1B1B</color>
+    <color name="backgroundBlack">#232222</color>
     <color name="buttonGrey">#787872</color>
     <color name="DarkGrey"> #30302F</color>
     <color name="Green">#2EEA36</color>
