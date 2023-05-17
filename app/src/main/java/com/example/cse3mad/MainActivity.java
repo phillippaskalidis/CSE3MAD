@@ -8,7 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class MainActivity extends AppCompatActivity {
+
+
+    FirebaseFirestore db;
 
     private EditText nameInput, dobInput, heightInput, weightInput;
 
@@ -16,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //Database
+        db = FirebaseFirestore.getInstance();
+
 
         // Find the input fields by their IDs
         nameInput = findViewById(R.id.nameInput);
