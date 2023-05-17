@@ -1,52 +1,51 @@
 package com.example.cse3mad;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondSetupActivity extends AppCompatActivity {
-
-    private RadioGroup radioGroupBuildMuscle, radioGroupLoseFat;
-    private Spinner spinnerActivityLevel, spinnerActivityFrequency;
-    private Button buttonDone;
+    private TextView goalWeightLabel, buildMuscleLabel, loseFatLabel, activityLevelLabel, activityFrequencyLabel;
+    private EditText goalWeightInput;
+    private RadioButton buildMuscleYes, buildMuscleNo, loseFatYes, loseFatNo;
+    private Spinner activityLevelDropdown, activityFrequencyDropdown;
+    private Button doneButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        // Initialize views
-        radioGroupBuildMuscle = findViewById(R.id.radioGroupBuildMuscle);
-        radioGroupLoseFat = findViewById(R.id.radioGroupLoseFat);
-        spinnerActivityLevel = findViewById(R.id.spnActivityLevel);
-        spinnerActivityFrequency = findViewById(R.id.spnActivityFrequency);
-        buttonDone = findViewById(R.id.btnDone);
+        goalWeightLabel = findViewById(R.id.goalWeightLabel);
+        buildMuscleLabel = findViewById(R.id.buildMuscleLabel);
+        loseFatLabel = findViewById(R.id.loseFatLabel);
+        activityLevelLabel = findViewById(R.id.activityLevelLabel);
+        activityFrequencyLabel = findViewById(R.id.activityFrequencyLabel);
 
-        // Set click listener for Done button
-        buttonDone.setOnClickListener(new View.OnClickListener() {
+        goalWeightInput = findViewById(R.id.goalWeightInput);
+
+        buildMuscleYes = findViewById(R.id.buildMuscleYes);
+        buildMuscleNo = findViewById(R.id.buildMuscleNo);
+
+        loseFatYes = findViewById(R.id.loseFatYes);
+        loseFatNo = findViewById(R.id.loseFatNo);
+
+        activityLevelDropdown = findViewById(R.id.activityLevelDropdown);
+        activityFrequencyDropdown = findViewById(R.id.activityFrequencyDropdown);
+
+        doneButton = findViewById(R.id.doneButton);
+        doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get user input from views
-                String buildMuscle = ((RadioButton) findViewById(radioGroupBuildMuscle.getCheckedRadioButtonId())).getText().toString();
-                String loseFat = ((RadioButton) findViewById(radioGroupLoseFat.getCheckedRadioButtonId())).getText().toString();
-                String activityLevel = spinnerActivityLevel.getSelectedItem().toString();
-                String activityFrequency = spinnerActivityFrequency.getSelectedItem().toString();
-
-                // Create intent to return data to previous activity
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("buildMuscle", buildMuscle);
-                resultIntent.putExtra("loseFat", loseFat);
-                resultIntent.putExtra("activityLevel", activityLevel);
-                resultIntent.putExtra("activityFrequency", activityFrequency);
-                setResult(RESULT_OK, resultIntent);
-                finish();
+                // Start the Home activity
+                Intent intent = new Intent(SecondSetupActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
     }

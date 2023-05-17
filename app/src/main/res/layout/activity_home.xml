@@ -10,7 +10,7 @@
         android:id="@+id/setupLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Setup"
+        android:text="Home"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -124,42 +124,36 @@
         android:id="@+id/activityLevelDropdown"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_corner"
-        android:backgroundTint="#ffffff"
-        android:textColor="#ffffff"
+
         app:layout_constraintStart_toEndOf="@id/activityLevelLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/activityLevelLabel"
         android:padding="16dp"/>
 
     <!-- Activity Frequency Label -->
-
-    <!-- Activity Frequency Dropdown -->
     <TextView
         android:id="@+id/activityFrequencyLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:padding="16dp"
         android:text="Activity Frequency:"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activityLevelDropdown" />
+        app:layout_constraintTop_toBottomOf="@id/activityLevelDropdown"
+        android:padding="16dp"/>
 
+    <!-- Activity Frequency Dropdown -->
     <Spinner
         android:id="@+id/activityFrequencyDropdown"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_corner"
-        android:backgroundTint="#ffffff"
-        android:textColor="#ffffff"
+
         app:layout_constraintStart_toEndOf="@id/activityFrequencyLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/activityFrequencyLabel"
         android:padding="16dp"/>
 
     <Button
-        android:id="@+id/doneButton"
+        android:id="@+id/nextButton"
         android:layout_width="215dp"
         android:layout_height="80dp"
         android:layout_marginTop="124dp"
