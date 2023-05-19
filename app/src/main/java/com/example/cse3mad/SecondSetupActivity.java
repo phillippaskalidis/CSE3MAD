@@ -57,9 +57,24 @@ public class SecondSetupActivity extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Retrieve the input values from the intent extras
+                Intent intent = getIntent();
+                String name = intent.getStringExtra("name");
+                String dob = intent.getStringExtra("dob");
+                String height = intent.getStringExtra("height");
+                String weight = intent.getStringExtra("weight");
+
+                // Create an intent to start the Home activity
+                Intent homeIntent = new Intent(SecondSetupActivity.this, HomeActivity.class);
+
+                // Pass the input values to the Home activity
+                homeIntent.putExtra("name", name);
+                homeIntent.putExtra("dob", dob);
+                homeIntent.putExtra("height", height);
+                homeIntent.putExtra("weight", weight);
+
                 // Start the Home activity
-                Intent intent = new Intent(SecondSetupActivity.this, HomeActivity.class);
-                startActivity(intent);
+                startActivity(homeIntent);
             }
         });
     }
