@@ -1,17 +1,15 @@
 package com.example.cse3mad;
 
-import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
-    private String nameInput;
-
     private TextView helloText;
     private TextView overviewText;
     private ProgressBar caloriesProgressBar;
@@ -23,9 +21,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Retrieve the name from the intent extras
+        // Retrieve the input values from the intent extras
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
+        String dob = intent.getStringExtra("dob");
+        String height = intent.getStringExtra("height");
+        String weight = intent.getStringExtra("weight");
+        double goalWeight = intent.getDoubleExtra("goalWeight", 0.0);
+        boolean buildMuscle = intent.getBooleanExtra("buildMuscle", false);
+        int activityIntensity = intent.getIntExtra("activityIntensity", 0);
 
         // Find the welcomeText TextView by its ID
         helloText = findViewById(R.id.helloText);
@@ -47,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         activityProgressBar.setProgress(80);
 
         // Call the CalculateGoal method
-        CalculateGoal(70.0, 183.0, 20, 65.0, true, 1);
+        CalculateGoal(Double.parseDouble(weight), Double.parseDouble(height), Integer.parseInt(dob), goalWeight, buildMuscle, activityIntensity);
 
         // Find the nextPageButton by its ID
         Button nextPageButton = findViewById(R.id.nextPageButton);
@@ -112,6 +116,11 @@ public class HomeActivity extends AppCompatActivity {
         } else if (intensity == 1) {
             requiredCalories += 100; // Medium intensity: add 100 calories
         }
-
+        // Start UpdateCalorie activity
+        Intent updateCalorieIntent = new Intent(HomeActivity.this, UpdateCalorie.class);
+        // Pass the required calories to the UpdateCalorie activity
+        updateCalorieIntent.putExtra("requiredCalories", requiredCalories);
+        startActivity(updateCalorieIntent);
     }
 }
+
