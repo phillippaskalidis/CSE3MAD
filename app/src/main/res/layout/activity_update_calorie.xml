@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/eTCarbs"
+        android:id="@+id/CInput"
         android:layout_width="141dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -52,10 +52,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvCarbs"
-        app:layout_constraintTop_toBottomOf="@+id/eTFat" />
+        app:layout_constraintTop_toBottomOf="@+id/FInput" />
 
     <EditText
-        android:id="@+id/eTProtein"
+        android:id="@+id/PInput"
         android:layout_width="141dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -68,14 +68,14 @@
         android:hint="@string/Percentage"
         android:inputType="numberDecimal"
         android:paddingHorizontal="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/eTFat"
+        app:layout_constraintBottom_toTopOf="@+id/FInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvProtein"
-        app:layout_constraintTop_toBottomOf="@+id/eTTotalCal" />
+        app:layout_constraintTop_toBottomOf="@+id/CaloriesInput" />
 
     <EditText
-        android:id="@+id/eTFat"
+        android:id="@+id/FInput"
         android:layout_width="141dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -88,14 +88,14 @@
         android:hint="@string/Percentage"
         android:inputType="numberDecimal"
         android:paddingHorizontal="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/eTCarbs"
+        app:layout_constraintBottom_toTopOf="@+id/CInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvFat"
-        app:layout_constraintTop_toBottomOf="@+id/eTProtein" />
+        app:layout_constraintTop_toBottomOf="@+id/PInput" />
 
     <EditText
-        android:id="@+id/eTTotalCal"
+        android:id="@+id/CaloriesInput"
         android:layout_width="141dp"
         android:layout_height="48dp"
         android:layout_marginTop="255dp"
@@ -109,7 +109,7 @@
         android:inputType="numberDecimal"
         android:paddingHorizontal="10dp"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/eTProtein"
+        app:layout_constraintBottom_toTopOf="@+id/PInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/TvTotalCal"
@@ -128,7 +128,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/TvProtein"
-        app:layout_constraintEnd_toStartOf="@+id/eTTotalCal"
+        app:layout_constraintEnd_toStartOf="@+id/CaloriesInput"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -144,7 +144,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/TvFat"
-        app:layout_constraintEnd_toStartOf="@+id/eTProtein"
+        app:layout_constraintEnd_toStartOf="@+id/PInput"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TvTotalCal" />
@@ -160,7 +160,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/TvCarbs"
-        app:layout_constraintEnd_toStartOf="@+id/eTFat"
+        app:layout_constraintEnd_toStartOf="@+id/FInput"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -175,7 +175,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Done_Button"
-        app:layout_constraintEnd_toStartOf="@+id/eTCarbs"
+        app:layout_constraintEnd_toStartOf="@+id/CInput"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
