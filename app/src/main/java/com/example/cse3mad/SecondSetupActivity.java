@@ -63,6 +63,11 @@ public class SecondSetupActivity extends AppCompatActivity {
                 String dob = intent.getStringExtra("dob");
                 String height = intent.getStringExtra("height");
                 String weight = intent.getStringExtra("weight");
+                String goalWeight = goalWeightInput.getText().toString();
+                boolean buildMuscle = buildMuscleYes.isChecked();
+                boolean loseFat = loseFatYes.isChecked();
+                String activityLevel = activityLevelDropdown.getSelectedItem().toString();
+                String activityFrequency = activityFrequencyDropdown.getSelectedItem().toString();
 
                 // Create an intent to start the Home activity
                 Intent homeIntent = new Intent(SecondSetupActivity.this, HomeActivity.class);
@@ -72,6 +77,11 @@ public class SecondSetupActivity extends AppCompatActivity {
                 homeIntent.putExtra("dob", dob);
                 homeIntent.putExtra("height", height);
                 homeIntent.putExtra("weight", weight);
+                homeIntent.putExtra("goalWeight", goalWeight);
+                homeIntent.putExtra("buildMuscle", buildMuscle);
+                homeIntent.putExtra("loseFat", loseFat);
+                homeIntent.putExtra("activityLevel", activityLevel);
+                homeIntent.putExtra("activityFrequency", activityFrequency);
 
                 // Start the Home activity
                 startActivity(homeIntent);

@@ -21,7 +21,7 @@ public class HomeActivityTwo extends AppCompatActivity {
         TextView helloText = findViewById(R.id.helloText);
 
         // Update the welcome message with the user's name
-        String welcomeMessage = "Hello, " + name + "!";
+        String welcomeMessage = "Hello, " + name;
         helloText.setText(welcomeMessage);
 
         // Set up the buttons
