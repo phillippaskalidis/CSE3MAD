@@ -4,8 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C1B1B"
+    android:background="@color/backgroundBlack"
     tools:context=".UpdateWater">
+
+
+    <Button
+        android:id="@+id/Cancel_Button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/round_corner"
+        android:shadowRadius="20"
+        android:text="@string/Cancel"
+        app:backgroundTint="#7A7878"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/Done_Button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/round_corner"
+        android:text="@string/Done"
+        app:backgroundTint="@color/waterActivityBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <EditText
+        android:id="@+id/WaterInput"
+        android:layout_width="172dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints=""
+        android:background="@drawable/round_corner"
+        android:backgroundTint="#30302F"
+        android:ems="10"
+        android:hint="@string/Percentage"
+        android:inputType="numberDecimal"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/waterSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+
+    <TextView
+        android:id="@+id/TvCalories"
+        android:layout_width="119dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_corner"
+        android:backgroundTint="#30302F"
+        android:gravity="center"
+        android:text="@string/Water"
+        android:textColor="#F8F2F2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/TvAmount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/TvAmount"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/Amount"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/TvAmountAuto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TvUpdateWater" />
+
+    <TextView
+        android:id="@+id/TvAmountAuto"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="170dp"
+        android:text="@string/Amount"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Done_Button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/TvProgressBar"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_corner"
+        android:backgroundTint="@color/waterActivityBlue"
+        android:gravity="center"
+        android:text="@string/Percentage"
+        android:textColor="#F8F2F2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/round_corner"
+        android:backgroundTint="@color/DarkGrey"
+        android:indeterminateTint="@color/buttonGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TvUpdateWater"
+        android:layout_width="105dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/WaterUpdate"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/waterSpinner"
+        android:layout_width="172dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="310dp"
+        android:background="@drawable/round_corner"
+        android:backgroundTint="#30302F"
+        android:contentDescription="1L"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

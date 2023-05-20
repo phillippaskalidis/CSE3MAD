@@ -11,7 +11,10 @@
     <string name="previous">Previous</string>
     <string name="InputIntHint"> 00 </string>
     <string name="Calories"> Calories </string>
+    <string name="Water"> Water </string>
     <string name="CaloriesUpdate"> Calories Update </string>
+    <string name="WaterUpdate"> Water Update </string>
+    <string name="Amount"> Amount </string>
     <string name="TotalCaloTxt"> Total Calories  </string>
     <string name="FatTxt"> Fat  </string>
     <string name="ProteinTxt"> Protein </string>
@@ -19,15 +22,25 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Percentage">%</string>
+
+
     <string-array name="activity_level_options">
         <item>Low Intensity</item>
         <item>Moderate Intensity</item>
         <item>High Intensity</item>
     </string-array>
+
     <string-array name="activity_frequency_options">
         <item>1-2 times per week</item>
         <item>3-4 times per week</item>
         <item>5+ times per week</item>
+    </string-array>
+
+    <string-array name="amountOptions">
+        <item>0.5L</item>
+        <item>1L</item>
+        <item>1.5L</item>
+        <item>2L</item>
     </string-array>
 
 </resources>

@@ -72,6 +72,19 @@ public class UpdateCalorie extends AppCompatActivity {
         CInput = Integer.parseInt(carbsValue);
         FInput = Integer.parseInt(fatValue);
 
+
+        // cancel button will just go back to home page
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cancel = new Intent(UpdateCalorie.this, HomeActivity.class);
+                startActivity(cancel);
+
+            }
+        });
+
+
+
         //doneBtn will save all the changes made to then display on first activity
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +92,9 @@ public class UpdateCalorie extends AppCompatActivity {
             {
                 CalculateMacros(CaloriesInput, CInput, PInput,FInput);
                 //Toast will let the user know when the changes have been updated
-                Toast.makeText(UpdateCalorie.this, " Calories updated! ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateCalorie.this, "updated! ", Toast.LENGTH_SHORT).show();
 
+                // intent to go into home page after updating
                 Intent updateCaloriesIntent = new Intent(UpdateCalorie.this, HomeActivity.class);
 
                 // pass input onto home activity
