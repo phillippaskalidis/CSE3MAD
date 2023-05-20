@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C1B1B"
+    android:background="@color/backgroundBlack"
     tools:context=".UpdateActivity">
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/Cancel_Button"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -20,10 +20,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.422"
-        app:layout_constraintStart_toEndOf="@+id/button15" />
+        app:layout_constraintStart_toEndOf="@+id/Done_Button" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/Done_Button"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/durationInput"
         android:layout_width="141dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
@@ -44,17 +44,17 @@
         android:background="@drawable/round_corner"
         android:backgroundTint="@color/DarkGrey"
         android:ems="10"
-        android:hint="       00"
+        android:hint="@string/InputIntHint"
         android:inputType="textPersonName"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        app:layout_constraintBottom_toTopOf="@+id/IntensitySpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/TvDuration"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/TvDuration"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -64,14 +64,14 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
+        app:layout_constraintBottom_toTopOf="@+id/TvIntensity"
+        app:layout_constraintEnd_toStartOf="@+id/durationInput"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/TvIntensity"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -80,14 +80,14 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintEnd_toStartOf="@+id/spinner2"
+        app:layout_constraintBottom_toTopOf="@+id/TvActivityType"
+        app:layout_constraintEnd_toStartOf="@+id/IntensitySpinner"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/TvDuration" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/TvActivityType"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -96,13 +96,13 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button15"
-        app:layout_constraintEnd_toStartOf="@+id/spinner3"
+        app:layout_constraintBottom_toTopOf="@+id/Done_Button"
+        app:layout_constraintEnd_toStartOf="@+id/activityTypeSpinner"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/ActivityLabel"
         android:layout_width="119dp"
         android:layout_height="40dp"
         android:layout_marginStart="44dp"
@@ -115,13 +115,13 @@
         android:textColor="#F8F2F2"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintBottom_toTopOf="@+id/TvDuration"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.487" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/ProgressLabel"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginTop="80dp"
@@ -150,7 +150,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/activityTitle"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_marginStart="30dp"
@@ -163,30 +163,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/IntensitySpinner"
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/round_corner"
         android:backgroundTint="@color/DarkGrey"
-        app:layout_constraintBottom_toTopOf="@+id/spinner3"
+        android:contentDescription="Intensity"
+        app:layout_constraintBottom_toTopOf="@+id/activityTypeSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView12" />
+        app:layout_constraintStart_toEndOf="@+id/TvIntensity" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/activityTypeSpinner"
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginBottom="72dp"
         android:background="@drawable/round_corner"
         android:backgroundTint="@color/DarkGrey"
-        app:layout_constraintBottom_toTopOf="@+id/button16"
+        android:contentDescription="Activity Type"
+        app:layout_constraintBottom_toTopOf="@+id/Cancel_Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         android:spinnerMode="dropdown"
-        app:layout_constraintStart_toEndOf="@+id/textView13" />
+        app:layout_constraintStart_toEndOf="@+id/TvActivityType" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

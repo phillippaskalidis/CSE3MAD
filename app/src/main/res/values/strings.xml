@@ -43,4 +43,16 @@
         <item>2L</item>
     </string-array>
 
+    <string-array name="Intensity">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+
+    <string-array name="activityType">
+        <item>Cardio</item>
+        <item>Strength Training</item>
+        <item>Interval Training</item>
+    </string-array>
+
 </resources>

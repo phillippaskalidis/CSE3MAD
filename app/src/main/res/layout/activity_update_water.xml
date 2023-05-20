@@ -44,7 +44,7 @@
         android:background="@drawable/round_corner"
         android:backgroundTint="#30302F"
         android:ems="10"
-        android:hint="@string/Percentage"
+        android:hint=" "
         android:inputType="numberDecimal"
         android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toTopOf="@+id/waterSpinner"

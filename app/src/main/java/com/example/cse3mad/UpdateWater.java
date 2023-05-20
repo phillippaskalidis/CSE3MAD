@@ -15,8 +15,7 @@ public class UpdateWater extends AppCompatActivity {
 
     Button doneBtn , cancelBtn;
     Spinner waterSpinner;
-    int requiredWater;
-    int water;
+    int requiredWater , water;
     public void CalculateWater(int waterInput)
     {
         // water represents the difference between required water and amount drank
@@ -47,7 +46,6 @@ public class UpdateWater extends AppCompatActivity {
             public void onClick(View view) {
                 Intent cancel = new Intent(UpdateWater.this, HomeActivity.class);
                 startActivity(cancel);
-
             }
         });
 

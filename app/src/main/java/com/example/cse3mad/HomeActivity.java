@@ -73,6 +73,26 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    public void CalculateActivityGoal()
+    {
+        //goal actvity is just the calories that need to be burnt everyday depending on goal
+
+        //Check if the goal is to lose weight and build muscle
+        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.20
+        // GA = Defict
+
+        // Check if the goal is to gain weight and build muscle
+        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.10
+        // GA = Defict
+
+        // Check if the goal is to lose weight without building muscle
+        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.25
+        // GA = Defict
+
+        // Check if the goal is to gain weight without building muscle
+        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.05
+        // GA = Defict
+    }
     public void CalculateGoal(double weight, double height, int age, double goalWeight, boolean buildMuscle, int intensity) {
         // Calculate the required calories for each day
         double requiredCalories = 66 + (6.2 * weight) + (12.7 * height) - (6.67 * age);
