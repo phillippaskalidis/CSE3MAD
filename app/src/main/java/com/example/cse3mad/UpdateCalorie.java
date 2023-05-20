@@ -16,6 +16,7 @@ public class UpdateCalorie extends AppCompatActivity {
     String caloriesValue , proteinValue , carbsValue, fatValue;
     // Input values that will go into method
     int CaloriesInput, PInput , CInput, FInput;
+    int Protein, Fat, Carbs, Calories;
 
 
     //Method to calculate the macros of each meal that will then
@@ -38,10 +39,10 @@ public class UpdateCalorie extends AppCompatActivity {
         int RequiredCalories =0;
 
         // minus the macro from that meal from the required macro amount for that day
-        int Protein = RequiredProtein - PResult;
-        int Fat = RequiredFat - FResult;
-        int Carbs = RequiredCarbs - CResult;
-        int Calories = RequiredCalories - MealCalories;
+        Protein = RequiredProtein - PResult;
+        Fat = RequiredFat - FResult;
+        Carbs = RequiredCarbs - CResult;
+        Calories = RequiredCalories - MealCalories;
 
     }
     @Override
@@ -79,9 +80,21 @@ public class UpdateCalorie extends AppCompatActivity {
                 CalculateMacros(CaloriesInput, CInput, PInput,FInput);
                 //Toast will let the user know when the changes have been updated
                 Toast.makeText(UpdateCalorie.this, " Calories updated! ", Toast.LENGTH_SHORT).show();
+
+                Intent updateCaloriesIntent = new Intent(UpdateCalorie.this, HomeActivity.class);
+
+                // pass input onto home activity
+                updateCaloriesIntent.putExtra("Protein", Protein);
+                updateCaloriesIntent.putExtra("Fat", Fat);
+                updateCaloriesIntent.putExtra("Carbs", Carbs);
+                updateCaloriesIntent.putExtra("Calories", Calories);
+
+                startActivity(updateCaloriesIntent);
+
             }
 
         });
+
 
     }
 

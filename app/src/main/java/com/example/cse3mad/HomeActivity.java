@@ -19,6 +19,28 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar activityProgressBar;
 
 
+    public void CalculateGoal()
+    {
+        // get the required calories for each day =
+        // 66 +(6.2 * current weight) + (12.7 * height) -(6.67 * age).
+
+        //if they want to lose weight so if goal weight is < current weight AND build muscle =  yes
+        // set macros to
+        // protein goal = 30% of calories , fat goal  = 30% of calories, carbs goal = 40% of calories
+
+        //if they want to gain weight  AND build muscle =  yes
+       // protein goal = 40% of calories , fat goal  = 20% of calories, carbs goal = 40% of calories
+
+       // if they want to lose weight  AND build muscle =  no
+        // protein goal = 35% of calories , fat goal  = 25% of calories, carbs goal = 40% of calories
+
+        //if they want to gain weight  AND build muscle =  no
+        // protein goal = 30% of calories , fat goal  = 35% of calories, carbs goal = 35% of calories
+
+        //depending on the Intensity of excersie add extra 200 cals for High Intensity, extra 100 for medium and nothing for low
+
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
