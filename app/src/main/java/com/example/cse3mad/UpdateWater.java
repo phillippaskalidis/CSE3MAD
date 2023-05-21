@@ -15,7 +15,7 @@ public class UpdateWater extends AppCompatActivity {
 
     Button doneBtn , cancelBtn;
     Spinner waterSpinner;
-    Double requiredWater , water, waterInput;
+    Double requiredWater , water;
     public void CalculateWater(Double waterInput)
     {
         // water represents the difference between required water and amount drank
