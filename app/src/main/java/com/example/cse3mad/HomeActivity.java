@@ -1,6 +1,4 @@
 
-
-
 package com.example.cse3mad;
 
 import android.os.Bundle;
@@ -114,23 +112,31 @@ public class HomeActivity extends AppCompatActivity {
 
     public void CalculateActivityGoal()
     {
-        //goal actvity is just the calories that need to be burnt everyday depending on goal
 
+        //goal actvity is just the calories that need to be burnt everyday depending on goal
+        requiredCalories = 66 + (6.2 * weight) + (12.7 * height) - (6.67 * age);
         //Check if the goal is to lose weight and build muscle
         //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.20
         // GA = Defict
-
+        double calorieDeficit;
+        if (goalWeight < weight && buildMuscle) {
+            calorieDeficit = requiredCalories * 0.20;}
         // Check if the goal is to gain weight and build muscle
         //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.10
         // GA = Defict
-
+        else if (goalWeight > weight && buildMuscle) {
+            calorieDeficit = requiredCalories * 0.10;}
         // Check if the goal is to lose weight without building muscle
         //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.25
         // GA = Defict
-
+        else if (goalWeight < weight && !buildMuscle) {
+                calorieDeficit = requiredCalories * 0.25;}
         // Check if the goal is to gain weight without building muscle
         //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.05
         // GA = Defict
+        else {
+            calorieDeficit = requiredCalories * 0.05;
+        }
     }
     public void CalculateGoal() {
 
