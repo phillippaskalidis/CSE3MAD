@@ -15,7 +15,7 @@ public class UpdateWater extends AppCompatActivity {
 
     Button doneBtn , cancelBtn;
     Spinner waterSpinner;
-    Double requiredWater , water;
+    Double requiredWater , water, waterInput;
     public void CalculateWater(Double waterInput)
     {
         // water represents the difference between required water and amount drank
@@ -38,6 +38,11 @@ public class UpdateWater extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, waterOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         waterSpinner.setAdapter(adapter);
+
+
+        Intent HomeIntent = getIntent();
+        String waterGoalString = HomeIntent.getStringExtra("waterGoal");
+        requiredWater = Double.parseDouble(waterGoalString);
 
 
         // cancel button will just go back to home page

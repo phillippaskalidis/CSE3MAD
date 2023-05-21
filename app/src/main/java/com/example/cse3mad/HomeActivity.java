@@ -23,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar activityProgressBar;
 
     private Double height, weight,  goalWeight ,
-            requiredCalories, proteinGoal, fatGoal, carbsGoal, calorieDeficit;
+            requiredCalories, proteinGoal, fatGoal, carbsGoal, calorieDeficit, waterGoal;
     private int age, intensity ;
     private boolean buildMuscle;
 
@@ -97,12 +97,16 @@ public class HomeActivity extends AppCompatActivity {
             updateCalorieIntent.putExtra("requiredFats", fatGoal);
             startActivity(updateCalorieIntent);
 
-            Intent updateActivityIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
+            Intent updateActivityIntent = new Intent(HomeActivity.this, UpdateActivity.class);
             // Pass the input values to the Activity Update activity
             updateActivityIntent.putExtra("calorieDeficit", calorieDeficit);
             updateActivityIntent.putExtra("weight", weight);
             updateActivityIntent.putExtra("age", dob);
             startActivity(updateActivityIntent);
+
+
+            Intent updateWaterIntent = new Intent(HomeActivity.this, UpdateWater.class);
+            updateWaterIntent.putExtra("waterGoal", waterGoal);
 
         });
     }
@@ -122,6 +126,10 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    public void CalculateWater()
+    {
+        waterGoal = (35 * weight);
+    }
     public void CalculateActivityGoal()
     {
         //goal activity is just the calories that need to be burnt everyday depending on goal
