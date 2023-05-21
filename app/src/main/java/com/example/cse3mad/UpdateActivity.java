@@ -5,19 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    Button doneBtn , cancelBtn;
-    Spinner intensitySpinner , activitySpinner;
-    int Activity , Intensity, age;
+    private Button doneBtn , cancelBtn;
+    private Spinner intensitySpinner , activitySpinner;
 
-    Double Duration, weight, RequiredDeficit, CurrentActivity;
+    private String DurationInput;
+    private int  Intensity, age;
+
+    private Double Duration, weight, RequiredDeficit, CurrentActivity;
     //get deficit from activity 2
-    String activityType;
+    private String activityType;
 
 
     public void CalculateCardio()
@@ -96,14 +100,36 @@ public class UpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
+
+        //this activity
+        // Intensity, Duration, String activityType;
+
+        //other activitys
+        //  age;, weight,RequiredDeficit, CurrentActivity;
+
+
         // declaring variables & Buttons and setting them to the relevant views by Id
         intensitySpinner = findViewById(R.id.IntensitySpinner);
         activitySpinner = findViewById(R.id.activityTypeSpinner);
-
+        DurationInput  = findViewById(R.id.durationInput).toString();
         doneBtn = findViewById(R.id.Done_Button);
         cancelBtn = findViewById(R.id.Cancel_Button);
 
-        //get data from activity 2
+        String[] IntensityOptions = getResources().getStringArray(R.array.Intensity);
+        ArrayAdapter IntensityAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, IntensityOptions);
+        IntensityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        intensitySpinner.setAdapter(IntensityAdapter);
+
+        String[] ActivityTypeOptions = getResources().getStringArray(R.array.activityType);
+        ArrayAdapter ActivityTypeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, ActivityTypeOptions);
+        IntensityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        activitySpinner.setAdapter(ActivityTypeAdapter);
+
+
+
+        Duration = Double.parseDouble(DurationInput);
+
+
 
         //cancel button will just go back to home page
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +158,7 @@ public class UpdateActivity extends AppCompatActivity {
                 Intent updateActivityIntent = new Intent(UpdateActivity.this, HomeActivity.class);
 
                 // pass input onto home activity
-                updateActivityIntent.putExtra("Activity", Activity);
+                updateActivityIntent.putExtra("activityType", activityType);
                 updateActivityIntent.putExtra("Intensity", Intensity);
                 startActivity(updateActivityIntent);
             }

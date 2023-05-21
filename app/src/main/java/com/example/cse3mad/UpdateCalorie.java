@@ -102,7 +102,6 @@ public class UpdateCalorie extends AppCompatActivity {
                 updateCaloriesIntent.putExtra("Fat", Fat);
                 updateCaloriesIntent.putExtra("Carbs", Carbs);
                 updateCaloriesIntent.putExtra("Calories", Calories);
-
                 startActivity(updateCaloriesIntent);
 
             }

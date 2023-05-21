@@ -115,26 +115,26 @@ public class HomeActivity extends AppCompatActivity {
             double carbsGoal = 0.4 * requiredCalories;
         }
         // Check if the goal is to lose weight without building muscle
-        else if (goalWeight < weight && !buildMuscle) {
+       // else if (goalWeight < weight && !buildMuscle) {
             // Set the macros for losing weight without building muscle
-            double proteinGoal = 0.35 * requiredCalories;
-            double fatGoal = 0.25 * requiredCalories;
-            double carbsGoal = 0.4 * requiredCalories;
-        }
+       //     double proteinGoal = 0.35 * requiredCalories;
+       //     double fatGoal = 0.25 * requiredCalories;
+      //      double carbsGoal = 0.4 * requiredCalories;
+     //   }
         // Check if the goal is to gain weight without building muscle
-        else if (goalWeight > weight && !buildMuscle) {
+       // else if (goalWeight > weight && !buildMuscle) {
             // Set the macros for gaining weight without building muscle
-            double proteinGoal = 0.3 * requiredCalories;
-            double fatGoal = 0.35 * requiredCalories;
-            double carbsGoal = 0.35 * requiredCalories;
-        }
+        //    double proteinGoal = 0.3 * requiredCalories;
+       //     double fatGoal = 0.35 * requiredCalories;
+       //     double carbsGoal = 0.35 * requiredCalories;
+      //  }
 
         // Adjust the calorie goal based on the intensity of exercise
-        if (intensity == 2) {
-            requiredCalories += 200; // High intensity: add 200 calories
-        } else if (intensity == 1) {
-            requiredCalories += 100; // Medium intensity: add 100 calories
-        }
+     //   if (intensity == 2) {
+       //     requiredCalories += 200; // High intensity: add 200 calories
+     //   } else if (intensity == 1) {
+       //     requiredCalories += 100; // Medium intensity: add 100 calories
+     //   }
 
         // Start UpdateCalorie activity
         Intent updateCalorieIntent = new Intent(HomeActivity.this, UpdateCalorie.class);
