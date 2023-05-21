@@ -11,19 +11,34 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class UpdateActivity extends AppCompatActivity {
 
     private Button doneBtn , cancelBtn;
     private Spinner intensitySpinner , activitySpinner;
 
     private String DurationInput;
-    private int  Intensity, age;
+    private int  intensity, age;
 
     private Double Duration, weight, RequiredDeficit, CurrentActivity;
 
-    private String activityType;
+    private String activityType, activityIntensity;
 
 
+    public void setActivityIntensity()
+    {
+        if(Objects.equals(activityIntensity, "High"))
+        {
+            intensity = 3;
+        } else if(Objects.equals(activityIntensity, "Moderate"))
+        {
+            intensity = 2;
+        } else
+        {
+            intensity = 1;
+        }
+    }
     public void CalculateCardio()
     {
         int MHR, HR,BPM;
@@ -33,12 +48,12 @@ public class UpdateActivity extends AppCompatActivity {
         MHR = 220 - age;
 
         // converting intensity from array string options to numbers for simplicity
-        if(Intensity == 1) {
+        if(intensity == 1) {
             // HR stands for Heart Rate, it is set to a negative number as  the MHR is the max heart rate,
             // when Intensity is low the heart rate will be less than max by 100 BPM
             HR = -100;
             BPM = MHR + HR;
-        } else if (Intensity == 2) {
+        } else if (intensity == 2) {
             HR = -70;
             BPM =  MHR + HR;
         } else {
@@ -61,11 +76,11 @@ public class UpdateActivity extends AppCompatActivity {
 
         // converting intensity from array string options to numbers for simplicity
         // Intensity for strength training would be the amount of additional weight being used
-        if(Intensity == 1) {
+        if(intensity == 1) {
            // Intensity 1 would be low intensity meaning just using body weight
             totalWeight = weight;
 
-        } else if (Intensity == 2) {
+        } else if (intensity == 2) {
             // Intensity 2 would be Moderate intensity meaning body weight plus Moderate weight which would be 50kgs
             int moderateWeight = 50;
             totalWeight = (weight + moderateWeight);
@@ -100,14 +115,6 @@ public class UpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-
-        //this activity
-        // Intensity, Duration, String activityType;
-
-        //other activitys
-        //  age;, weight,RequiredDeficit, CurrentActivity;
-
-
         // declaring variables & Buttons and setting them to the relevant views by Id
         intensitySpinner = findViewById(R.id.IntensitySpinner);
         activitySpinner = findViewById(R.id.activityTypeSpinner);
@@ -128,6 +135,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         Duration = Double.parseDouble(DurationInput);
         activityType = activitySpinner.getSelectedItem().toString();
+        activityIntensity = intensitySpinner.getSelectedItem().toString();
 
 
         Intent getHomeIntent = getIntent();
@@ -168,7 +176,8 @@ public class UpdateActivity extends AppCompatActivity {
 
                 // pass input onto home activity
                 updateActivityIntent.putExtra("activityType", activityType);
-                updateActivityIntent.putExtra("Intensity", Intensity);
+                updateActivityIntent.putExtra("Intensity", intensity);
+                updateActivityIntent.putExtra("CurrentActivity", CurrentActivity);
                 startActivity(updateActivityIntent);
             }
         });
