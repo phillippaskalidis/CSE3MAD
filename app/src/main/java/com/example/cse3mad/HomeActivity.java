@@ -79,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
 
             setActivityIntensity();
             CalculateActivityGoal();
+            CalculateGoal ();
             // Start HomeActivityTwo
             Intent homeTwoIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
             // Pass the input values to the Home activity
@@ -91,7 +92,10 @@ public class HomeActivity extends AppCompatActivity {
             // Start HomeActivityTwo
             Intent updateCalorieIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
             // Pass the input values to the Home activity
-            homeTwoIntent.putExtra("RequiredCalories", requiredCalories);
+            updateCalorieIntent.putExtra("requiredCalories", requiredCalories);
+            updateCalorieIntent.putExtra("requiredProtein", proteinGoal);
+            updateCalorieIntent.putExtra("requiredCarbs", carbsGoal);
+            updateCalorieIntent.putExtra("requiredFats", fatGoal);
             startActivity(updateCalorieIntent);
 
         });

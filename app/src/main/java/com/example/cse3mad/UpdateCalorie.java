@@ -11,38 +11,36 @@ import android.widget.Toast;
 
 public class UpdateCalorie extends AppCompatActivity {
 
-    Button doneBtn , cancelBtn;
-    EditText ETCalo , ETProtein , ETCarbs, ETFat;
-    String caloriesValue , proteinValue , carbsValue, fatValue;
-    // Input values that will go into method
-    int CaloriesInput, PInput , CInput, FInput;
-    int Protein, Fat, Carbs, Calories;
+    private Button doneBtn , cancelBtn;
+
+    // Values from layout
+    private EditText ETCalo , ETProtein , ETCarbs, ETFat;
+    // turn values into string value
+    private String caloriesValue , proteinValue , carbsValue, fatValue;
+
+    //the required protein is the goal
+    private Double requiredProtein, requiredFat , requiredCarbs ,requiredCalories,
+            Protein, Fat, Carbs, Calories, CaloriesInput, PInput , CInput, FInput ;
 
 
     //Method to calculate the macros of each meal that will then
-    public void CalculateMacros(int MealCalories, int MealCarbs, int MealProtein, int MealFat)
+    public void CalculateMacros(Double MealCalories, Double MealCarbs, Double MealProtein, Double MealFat)
     {
         //Getting the ratio from each category from the meal
-        int ProteinRatio = MealProtein/100;
-        int FatRatio = MealFat/100;
-        int CarbsRatio = MealCarbs/100;
+        Double ProteinRatio = MealProtein/100;
+        Double FatRatio = MealFat/100;
+        Double CarbsRatio = MealCarbs/100;
 
         // Get macro total from the meal
-        int PResult = MealCalories * ProteinRatio;
-        int FResult = MealCalories * FatRatio;
-        int CResult = MealCalories * CarbsRatio;
-
-        // this will be assigned to the variable of another activity but will save in this for now
-        int RequiredProtein = 0;
-        int RequiredFat = 0;
-        int RequiredCarbs = 0;
-        int RequiredCalories =0;
+        Double PResult = MealCalories * ProteinRatio;
+        Double FResult = MealCalories * FatRatio;
+        Double CResult = MealCalories * CarbsRatio;
 
         // minus the macro from that meal from the required macro amount for that day
-        Protein = RequiredProtein - PResult;
-        Fat = RequiredFat - FResult;
-        Carbs = RequiredCarbs - CResult;
-        Calories = RequiredCalories - MealCalories;
+        Protein = requiredProtein - PResult;
+        Fat = requiredFat - FResult;
+        Carbs = requiredCarbs - CResult;
+        Calories = requiredCalories - MealCalories;
 
     }
     @Override
@@ -67,11 +65,25 @@ public class UpdateCalorie extends AppCompatActivity {
         fatValue = ETFat.getText().toString();
 
         //turn the string to an Int to then use in the method to calculate the macros of that meal
-        CaloriesInput = Integer.parseInt(caloriesValue);
-        PInput  = Integer.parseInt(proteinValue);
-        CInput = Integer.parseInt(carbsValue);
-        FInput = Integer.parseInt(fatValue);
+        CaloriesInput = Double.parseDouble(caloriesValue);
+        PInput  = Double.parseDouble(proteinValue);
+        CInput = Double.parseDouble(carbsValue);
+        FInput = Double.parseDouble(fatValue);
 
+
+        //get Data from intent
+        Intent HomeIntent = getIntent();
+        String requiredCaloriesString = HomeIntent.getStringExtra("requiredCalories");
+        String requiredCarbsString = HomeIntent.getStringExtra("requiredCarbs");
+        String requiredProteinString = HomeIntent.getStringExtra("requiredProtein");
+        String requiredFatString = HomeIntent.getStringExtra("requiredFat");
+
+
+        //save data to variables
+        requiredCalories = Double.parseDouble(requiredCaloriesString);
+        requiredCarbs = Double.parseDouble(requiredCarbsString);
+        requiredFat =  Double.parseDouble(requiredFatString);
+        requiredProtein  =  Double.parseDouble(requiredProteinString);
 
         // cancel button will just go back to home page
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +115,7 @@ public class UpdateCalorie extends AppCompatActivity {
                 updateCaloriesIntent.putExtra("Carbs", Carbs);
                 updateCaloriesIntent.putExtra("Calories", Calories);
                 startActivity(updateCaloriesIntent);
+
 
             }
 
