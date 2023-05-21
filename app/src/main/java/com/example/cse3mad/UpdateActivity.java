@@ -13,16 +13,82 @@ public class UpdateActivity extends AppCompatActivity {
 
     Button doneBtn , cancelBtn;
     Spinner intensitySpinner , activitySpinner;
+    int Activity , Intensity, age;
 
-    int Activity , Intensity;
+    Double Duration, weight, RequiredDeficit, CurrentActivity;
+    //get deficit from activity 2
+    String activityType;
 
 
-
-    public void CalculateActivity(int IntensityInput, int ActivityInput)
+    public void CalculateCardio()
     {
+        int MHR, HR,BPM;
+        Double CaloriesPerMinute, CaloriesBurnt;
+
+        //MHR stands for max heart rate, its calculated this way.
+        MHR = 220 - age;
+
+        // converting intensity from array string options to numbers for simplicity
+        if(Intensity == 1) {
+            // HR stands for Heart Rate, it is set to a negative number as  the MHR is the max heart rate,
+            // when Intensity is low the heart rate will be less than max by 100 BPM
+            HR = -100;
+            BPM = MHR + HR;
+        } else if (Intensity == 2) {
+            HR = -70;
+            BPM =  MHR + HR;
+        } else {
+            HR = -40;
+            BPM =  MHR + HR;
+        }
+
+        //formula for amount of calories burned per minute
+        CaloriesPerMinute =  (((((-20.4022 + (0.4472 * BPM)) - (0.1263 * weight)) + (0.074 * age) )/ 4.184));
+        CaloriesBurnt= CaloriesPerMinute * Duration;
+
+        // Current Activity will be used in the progress bar to track the progress
+        CurrentActivity = RequiredDeficit - CaloriesBurnt;
+
+    }
+
+    public void CalculateStrength()
+    {
+        Double totalWeight, CaloriesBurnt;
+
+        // converting intensity from array string options to numbers for simplicity
+        // Intensity for strength training would be the amount of additional weight being used
+        if(Intensity == 1) {
+           // Intensity 1 would be low intensity meaning just using body weight
+            totalWeight = weight;
+
+        } else if (Intensity == 2) {
+            // Intensity 2 would be Moderate intensity meaning body weight plus Moderate weight which would be 50kgs
+            int moderateWeight = 50;
+            totalWeight = weight + moderateWeight;
+
+        } else {
+            int highWeight = 80;
+            totalWeight = weight + highWeight;
+        }
+
+        //formula for strength training : [Minutes working out] × [bodyWeight in kg] × 0.0713
+        CaloriesBurnt= (Duration * totalWeight * 0.0713);
+        //Current Activity will be used in the progress bar to track the progress
+        CurrentActivity = RequiredDeficit - CaloriesBurnt;
 
 
+    }
 
+    public void CalculateActivity()
+    {
+        if (activityType == "Strength")
+        {
+            CalculateStrength();
+        }
+        else if (activityType == "Cardio")
+        {
+            CalculateCardio();
+        }
     }
 
     @Override
@@ -36,6 +102,8 @@ public class UpdateActivity extends AppCompatActivity {
 
         doneBtn = findViewById(R.id.Done_Button);
         cancelBtn = findViewById(R.id.Cancel_Button);
+
+        //get data from activity 2
 
         //cancel button will just go back to home page
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +123,7 @@ public class UpdateActivity extends AppCompatActivity {
                 String ActivityOption = activitySpinner.getSelectedItem().toString();
                 int ActivityInput = Integer.parseInt(intensityOption);
 
-                CalculateActivity(IntensityInput, ActivityInput);
+                CalculateActivity();
 
                 // Toast will let the user know when the changes have been updated
                 Toast.makeText(UpdateActivity.this, " updated! ", Toast.LENGTH_SHORT).show();

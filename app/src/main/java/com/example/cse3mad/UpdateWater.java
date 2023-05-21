@@ -15,8 +15,8 @@ public class UpdateWater extends AppCompatActivity {
 
     Button doneBtn , cancelBtn;
     Spinner waterSpinner;
-    int requiredWater , water;
-    public void CalculateWater(int waterInput)
+    Double requiredWater , water;
+    public void CalculateWater(Double waterInput)
     {
         // water represents the difference between required water and amount drank
         water = requiredWater - waterInput;
@@ -54,7 +54,7 @@ public class UpdateWater extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String WaterOption = waterSpinner.getSelectedItem().toString();
-                int waterInput = Integer.parseInt(WaterOption);
+                double waterInput = Double.parseDouble(WaterOption);
                 CalculateWater(waterInput);
 
                 // Toast will let the user know when the changes have been updated

@@ -85,6 +85,12 @@ public class SecondSetupActivity extends AppCompatActivity {
 
                 // Start the Home activity
                 startActivity(homeIntent);
+
+                // Pass data to the Activity activity
+                Intent activityIntent = new Intent(SecondSetupActivity.this , UpdateActivity.class);
+                activityIntent.putExtra("height", height);
+                activityIntent.putExtra("weight", weight);
+
             }
         });
     }

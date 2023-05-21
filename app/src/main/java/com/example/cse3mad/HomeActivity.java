@@ -18,6 +18,10 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar waterProgressBar;
     private ProgressBar activityProgressBar;
 
+    private Double height, weight,  goalWeight;
+    private int age,intensity;
+    private boolean buildMuscle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         activityProgressBar.setProgress(80);
 
         // Call the CalculateGoal method
-        CalculateGoal(70.0, 183.0, 20, 65.0, true, 1);
+        CalculateGoal();
 
         // Find the nextPageButton by its ID
         Button nextPageButton = findViewById(R.id.nextPageButton);
@@ -58,8 +62,15 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                 String name = intent.getStringExtra("name");
                 String dob = intent.getStringExtra("dob");
-                String height = intent.getStringExtra("height");
-                String weight = intent.getStringExtra("weight");
+                String heightString = intent.getStringExtra("height");
+                String weightString = intent.getStringExtra("weight");
+                String goalWeightString = intent.getStringExtra("goalWeight");
+
+
+                weight = Double.parseDouble(weightString);
+                height = Double.parseDouble(heightString);
+                goalWeight = Double.parseDouble(goalWeightString);
+                buildMuscle = true;
 
                 // Start HomeActivityTwo
                 Intent homeTwoIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
@@ -93,7 +104,8 @@ public class HomeActivity extends AppCompatActivity {
         //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.05
         // GA = Defict
     }
-    public void CalculateGoal(double weight, double height, int age, double goalWeight, boolean buildMuscle, int intensity) {
+    public void CalculateGoal() {
+
         // Calculate the required calories for each day
         double requiredCalories = 66 + (6.2 * weight) + (12.7 * height) - (6.67 * age);
 
