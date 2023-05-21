@@ -20,7 +20,7 @@ public class UpdateActivity extends AppCompatActivity {
     private int  Intensity, age;
 
     private Double Duration, weight, RequiredDeficit, CurrentActivity;
-    //get deficit from activity 2
+
     private String activityType;
 
 
@@ -51,7 +51,7 @@ public class UpdateActivity extends AppCompatActivity {
         CaloriesBurnt= CaloriesPerMinute * Duration;
 
         // Current Activity will be used in the progress bar to track the progress
-        CurrentActivity = RequiredDeficit - CaloriesBurnt;
+        CurrentActivity = (RequiredDeficit - CaloriesBurnt);
 
     }
 
@@ -68,17 +68,17 @@ public class UpdateActivity extends AppCompatActivity {
         } else if (Intensity == 2) {
             // Intensity 2 would be Moderate intensity meaning body weight plus Moderate weight which would be 50kgs
             int moderateWeight = 50;
-            totalWeight = weight + moderateWeight;
+            totalWeight = (weight + moderateWeight);
 
         } else {
             int highWeight = 80;
-            totalWeight = weight + highWeight;
+            totalWeight = (weight + highWeight);
         }
 
         //formula for strength training : [Minutes working out] × [bodyWeight in kg] × 0.0713
         CaloriesBurnt= (Duration * totalWeight * 0.0713);
         //Current Activity will be used in the progress bar to track the progress
-        CurrentActivity = RequiredDeficit - CaloriesBurnt;
+        CurrentActivity = (RequiredDeficit - CaloriesBurnt);
 
 
     }
@@ -126,10 +126,19 @@ public class UpdateActivity extends AppCompatActivity {
         activitySpinner.setAdapter(ActivityTypeAdapter);
 
 
-
         Duration = Double.parseDouble(DurationInput);
+        activityType = activitySpinner.getSelectedItem().toString();
 
 
+        Intent getHomeIntent = getIntent();
+        String ageData = getHomeIntent.getStringExtra("dob");
+        String weightData = getHomeIntent.getStringExtra("weight");
+        String RequiredDeficitData = getHomeIntent.getStringExtra("calorieDeficit");
+
+
+        age = Integer.parseInt(ageData);
+        weight = Double.parseDouble(weightData);
+        RequiredDeficit = Double.parseDouble(RequiredDeficitData);
 
         //cancel button will just go back to home page
         cancelBtn.setOnClickListener(new View.OnClickListener() {

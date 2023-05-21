@@ -90,12 +90,19 @@ public class HomeActivity extends AppCompatActivity {
 
             // Start HomeActivityTwo
             Intent updateCalorieIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
-            // Pass the input values to the Home activity
+            // Pass the input values to the Calorie Update activity
             updateCalorieIntent.putExtra("requiredCalories", requiredCalories);
             updateCalorieIntent.putExtra("requiredProtein", proteinGoal);
             updateCalorieIntent.putExtra("requiredCarbs", carbsGoal);
             updateCalorieIntent.putExtra("requiredFats", fatGoal);
             startActivity(updateCalorieIntent);
+
+            Intent updateActivityIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
+            // Pass the input values to the Activity Update activity
+            updateActivityIntent.putExtra("calorieDeficit", calorieDeficit);
+            updateActivityIntent.putExtra("weight", weight);
+            updateActivityIntent.putExtra("age", dob);
+            startActivity(updateActivityIntent);
 
         });
     }
@@ -117,7 +124,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public void CalculateActivityGoal()
     {
-
         //goal activity is just the calories that need to be burnt everyday depending on goal
         requiredCalories = (66 + (6.2 * weight) + (12.7 * height) - (6.67 * age));
         //Check if the goal is to lose weight and build muscle
