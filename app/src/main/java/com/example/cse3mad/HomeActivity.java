@@ -22,7 +22,8 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar waterProgressBar;
     private ProgressBar activityProgressBar;
 
-    private Double height, weight,  goalWeight ,  requiredCalories, proteinGoal, fatGoal, carbsGoal; ;
+    private Double height, weight,  goalWeight ,
+            requiredCalories, proteinGoal, fatGoal, carbsGoal, calorieDeficit;
     private int age, intensity ;
     private boolean buildMuscle;
 
@@ -117,29 +118,26 @@ public class HomeActivity extends AppCompatActivity {
     public void CalculateActivityGoal()
     {
 
-        //goal actvity is just the calories that need to be burnt everyday depending on goal
-        requiredCalories = 66 + (6.2 * weight) + (12.7 * height) - (6.67 * age);
+        //goal activity is just the calories that need to be burnt everyday depending on goal
+        requiredCalories = (66 + (6.2 * weight) + (12.7 * height) - (6.67 * age));
         //Check if the goal is to lose weight and build muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.20
-        // GA = Defict
-        double calorieDeficit;
-        if (goalWeight < weight && buildMuscle) {
-            calorieDeficit = requiredCalories * 0.20;}
+
+        if ((goalWeight < weight)&& buildMuscle) {
+            calorieDeficit = (requiredCalories * 0.20);}
         // Check if the goal is to gain weight and build muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.10
-        // GA = Defict
-        else if (goalWeight > weight && buildMuscle) {
+
+        else if ((goalWeight > weight) && buildMuscle) {
             calorieDeficit = requiredCalories * 0.10;}
         // Check if the goal is to lose weight without building muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.25
-        // GA = Defict
-        else if (goalWeight < weight && !buildMuscle) {
-                calorieDeficit = requiredCalories * 0.25;}
+        //calories that need to be burned  Calorie Deficit = GoalCalorie * 0.25
+        // GA = Deficit
+        else if ((goalWeight < weight) && !buildMuscle) {
+                calorieDeficit = (requiredCalories * 0.25);}
         // Check if the goal is to gain weight without building muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.05
-        // GA = Defict
+        //calories that need to be burned  Calorie Deficit = GoalCalorie * 0.05
+        // GA = Deficit
         else {
-            calorieDeficit = requiredCalories * 0.05;
+            calorieDeficit = (requiredCalories * 0.05);
         }
     }
     public void CalculateGoal() {
