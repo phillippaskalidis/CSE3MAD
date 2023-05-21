@@ -1,35 +1,37 @@
 package com.example.cse3mad;
-
-import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HomeActivity extends AppCompatActivity {
-    private String nameInput;
 
+public class HomeActivity extends AppCompatActivity {
     private TextView helloText;
     private TextView overviewText;
     private ProgressBar caloriesProgressBar;
     private ProgressBar waterProgressBar;
     private ProgressBar activityProgressBar;
 
-    private Double height, weight,  goalWeight;
-    private int age,intensity;
-    private boolean buildMuscle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Retrieve the name from the intent extras
+        // Retrieve the input values from the intent extras
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
+        String dob = intent.getStringExtra("dob");
+        String height = intent.getStringExtra("height");
+        String weight = intent.getStringExtra("weight");
+        double goalWeight = intent.getDoubleExtra("goalWeight", 0.0);
+        boolean buildMuscle = intent.getBooleanExtra("buildMuscle", false);
+        int activityIntensity = intent.getIntExtra("activityIntensity", 0);
 
         // Find the welcomeText TextView by its ID
         helloText = findViewById(R.id.helloText);
@@ -50,62 +52,51 @@ public class HomeActivity extends AppCompatActivity {
         waterProgressBar.setProgress(50);
         activityProgressBar.setProgress(80);
 
-        // Call the CalculateGoal method
-        CalculateGoal();
+        // Call the CalculateGoal method if input values are valid
+        if (validateInput(weight, height, dob)) {
+            double weightValue = Double.parseDouble(weight);
+            double heightValue = Double.parseDouble(height);
+            int dobValue = Integer.parseInt(dob);
+            CalculateGoal(weightValue, heightValue, dobValue, goalWeight, buildMuscle, activityIntensity);
+        } else {
+            Toast.makeText(this, "Invalid input. Please enter valid weight, height, and date of birth.", Toast.LENGTH_SHORT).show();
+        }
 
-        // Find the nextPageButton by its ID
-        Button nextPageButton = findViewById(R.id.nextPageButton);
-        nextPageButton.setOnClickListener(new View.OnClickListener() {
+        // Set up the buttons
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        Button button3 = findViewById(R.id.button3);
+
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Retrieve the input values from the intent extras
-                Intent intent = getIntent();
-                String name = intent.getStringExtra("name");
-                String dob = intent.getStringExtra("dob");
-                String heightString = intent.getStringExtra("height");
-                String weightString = intent.getStringExtra("weight");
-                String goalWeightString = intent.getStringExtra("goalWeight");
+                Intent UpdateActivityIntent = new Intent(HomeActivity.this, UpdateActivity.class);
+                startActivity(UpdateActivityIntent);
+            }
+        });
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent UpdateWaterIntent = new Intent(HomeActivity.this, UpdateWater.class);
+                startActivity(UpdateWaterIntent);
+            }
+        });
 
-                weight = Double.parseDouble(weightString);
-                height = Double.parseDouble(heightString);
-                goalWeight = Double.parseDouble(goalWeightString);
-                buildMuscle = true;
-
-                // Start HomeActivityTwo
-                Intent homeTwoIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
-                // Pass the input values to the Home activity
-                homeTwoIntent.putExtra("name", name);
-                homeTwoIntent.putExtra("dob", dob);
-                homeTwoIntent.putExtra("height", height);
-                homeTwoIntent.putExtra("weight", weight);
-                startActivity(homeTwoIntent);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent UpdateCalorieIntent = new Intent(HomeActivity.this, UpdateCalorie.class);
+                startActivity(UpdateCalorieIntent);
             }
         });
     }
 
-    public void CalculateActivityGoal()
-    {
-        //goal actvity is just the calories that need to be burnt everyday depending on goal
-
-        //Check if the goal is to lose weight and build muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.20
-        // GA = Defict
-
-        // Check if the goal is to gain weight and build muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.10
-        // GA = Defict
-
-        // Check if the goal is to lose weight without building muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.25
-        // GA = Defict
-
-        // Check if the goal is to gain weight without building muscle
-        //calories that need to be burned  Calorie Defiect = GoalCalorie * 0.05
-        // GA = Defict
+    private boolean validateInput(String weight, String height, String dob) {
+        return !TextUtils.isEmpty(weight) && !TextUtils.isEmpty(height) && !TextUtils.isEmpty(dob);
     }
-    public void CalculateGoal() {
 
+    public void CalculateGoal(double weight, double height, int age, double goalWeight, boolean buildMuscle, int intensity) {
         // Calculate the required calories for each day
         double requiredCalories = 66 + (6.2 * weight) + (12.7 * height) - (6.67 * age);
 
@@ -145,5 +136,10 @@ public class HomeActivity extends AppCompatActivity {
             requiredCalories += 100; // Medium intensity: add 100 calories
         }
 
+        // Start UpdateCalorie activity
+        Intent updateCalorieIntent = new Intent(HomeActivity.this, UpdateCalorie.class);
+        // Pass the required calories to the UpdateCalorie activity
+        updateCalorieIntent.putExtra("requiredCalories", requiredCalories);
+        startActivity(updateCalorieIntent);
     }
 }

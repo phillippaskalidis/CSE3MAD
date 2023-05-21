@@ -36,10 +36,6 @@
             android:name=".HomeActivity"
             android:label="@string/app_name">
         </activity>
-        <activity
-            android:name=".HomeActivityTwo"
-            android:label="@string/app_name">
-        </activity>
     </application>
 
 

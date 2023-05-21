@@ -109,7 +109,6 @@
         android:padding="16dp"
         android:text="Activity"
         android:textColor="#ffffff"
-        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caloriesProgressBar" />
@@ -129,7 +128,7 @@
         android:id="@+id/nextPageButton"
         android:layout_width="112dp"
         android:layout_height="95dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/round_corner"
         android:padding="16dp"
         android:text="+"
@@ -137,10 +136,54 @@
         android:textStyle="bold"
         app:backgroundTint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activityProgressBar" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="137dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/round_corner"
+        android:padding="16dp"
+        android:text="Activity"
+        android:textStyle="bold"
+        app:backgroundTint="#808080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nextPageButton" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="137dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/round_corner"
+        android:padding="16dp"
+        android:text="Water"
+        android:textStyle="bold"
+        app:backgroundTint="#808080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button1" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="137dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_corner"
+        android:padding="16dp"
+        android:text="Calories"
+        android:textStyle="bold"
+        app:backgroundTint="#808080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
