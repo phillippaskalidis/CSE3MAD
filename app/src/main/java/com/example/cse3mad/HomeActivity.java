@@ -1,4 +1,3 @@
-
 package com.example.cse3mad;
 
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import java.util.Objects;
 public class HomeActivity extends AppCompatActivity {
     private String name, activityIntensityString;
 
-    private Button nextPageButton;
     private TextView helloText;
     private TextView overviewText;
     private ProgressBar caloriesProgressBar;
@@ -55,98 +53,71 @@ public class HomeActivity extends AppCompatActivity {
         waterProgressBar.setProgress(50);
         activityProgressBar.setProgress(80);
 
+        // Find the buttons by their IDs
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        Button button3 = findViewById(R.id.button3);
 
+        // Set click listeners for the buttons
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, UpdateActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        // Find the nextPageButton by its ID
-        nextPageButton = findViewById(R.id.nextPageButton);
-        nextPageButton.setOnClickListener(v -> {
-            // Retrieve the input values from the intent extras
-            Intent intent1 = getIntent();
-            String name = intent1.getStringExtra("name");
-            String dob = intent1.getStringExtra("dob");
-            String heightString = intent1.getStringExtra("height");
-            String weightString = intent1.getStringExtra("weight");
-            String goalWeightString = intent1.getStringExtra("goalWeight");
-            buildMuscle = intent1.getBooleanExtra("buildMuscle", false);
-            activityIntensityString = intent1.getStringExtra("activityLevel");
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, UpdateWater.class);
+                startActivity(intent);
+            }
+        });
 
-            weight = Double.parseDouble(weightString);
-            height = Double.parseDouble(heightString);
-            goalWeight = Double.parseDouble(goalWeightString);
-            age = Integer.parseInt(dob) ;
-
-
-            setActivityIntensity();
-            CalculateActivityGoal();
-            CalculateGoal ();
-            // Start HomeActivityTwo
-            Intent homeTwoIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
-            // Pass the input values to the Home activity
-            homeTwoIntent.putExtra("name", name);
-            homeTwoIntent.putExtra("dob", dob);
-            homeTwoIntent.putExtra("height", height);
-            homeTwoIntent.putExtra("weight", weight);
-            startActivity(homeTwoIntent);
-
-            // Start HomeActivityTwo
-            Intent updateCalorieIntent = new Intent(HomeActivity.this, HomeActivityTwo.class);
-            // Pass the input values to the Calorie Update activity
-            updateCalorieIntent.putExtra("requiredCalories", requiredCalories);
-            updateCalorieIntent.putExtra("requiredProtein", proteinGoal);
-            updateCalorieIntent.putExtra("requiredCarbs", carbsGoal);
-            updateCalorieIntent.putExtra("requiredFats", fatGoal);
-            startActivity(updateCalorieIntent);
-
-            Intent updateActivityIntent = new Intent(HomeActivity.this, UpdateActivity.class);
-            // Pass the input values to the Activity Update activity
-            updateActivityIntent.putExtra("calorieDeficit", calorieDeficit);
-            updateActivityIntent.putExtra("weight", weight);
-            updateActivityIntent.putExtra("age", dob);
-            startActivity(updateActivityIntent);
-
-
-            Intent updateWaterIntent = new Intent(HomeActivity.this, UpdateWater.class);
-            updateWaterIntent.putExtra("waterGoal", waterGoal);
-
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, UpdateCalorie.class);
+                startActivity(intent);
+            }
         });
     }
 
 
-    public void setActivityIntensity()
-    {
-        if(Objects.equals(activityIntensityString, "High"))
-        {
+    public void setActivityIntensity() {
+        if (Objects.equals(activityIntensityString, "High")) {
             intensity = 3;
-        } else if(Objects.equals(activityIntensityString, "Moderate"))
-        {
+        } else if (Objects.equals(activityIntensityString, "Moderate")) {
             intensity = 2;
-        } else
-        {
+        } else {
             intensity = 1;
         }
     }
 
-    public void CalculateWater()
-    {
+    public void CalculateWater() {
         waterGoal = (35 * weight);
     }
-    public void CalculateActivityGoal()
-    {
+
+    public void CalculateActivityGoal() {
         //goal activity is just the calories that need to be burnt everyday depending on goal
         requiredCalories = (66 + (6.2 * weight) + (12.7 * height) - (6.67 * age));
         //Check if the goal is to lose weight and build muscle
 
-        if ((goalWeight < weight)&& buildMuscle) {
-            calorieDeficit = (requiredCalories * 0.20);}
+        if ((goalWeight < weight) && buildMuscle) {
+            calorieDeficit = (requiredCalories * 0.20);
+        }
         // Check if the goal is to gain weight and build muscle
 
         else if ((goalWeight > weight) && buildMuscle) {
-            calorieDeficit = requiredCalories * 0.10;}
+            calorieDeficit = requiredCalories * 0.10;
+        }
         // Check if the goal is to lose weight without building muscle
         //calories that need to be burned  Calorie Deficit = GoalCalorie * 0.25
         // GA = Deficit
         else if ((goalWeight < weight) && !buildMuscle) {
-                calorieDeficit = (requiredCalories * 0.25);}
+            calorieDeficit = (requiredCalories * 0.25);
+        }
         // Check if the goal is to gain weight without building muscle
         //calories that need to be burned  Calorie Deficit = GoalCalorie * 0.05
         // GA = Deficit
@@ -154,6 +125,7 @@ public class HomeActivity extends AppCompatActivity {
             calorieDeficit = (requiredCalories * 0.05);
         }
     }
+
     public void CalculateGoal() {
 
         // Calculate the required calories for each day
@@ -176,13 +148,13 @@ public class HomeActivity extends AppCompatActivity {
         // Check if the goal is to lose weight without building muscle
         else if ((goalWeight < weight) && !buildMuscle) {
             // Set the macros for losing weight without building muscle
-             proteinGoal = 0.35 * requiredCalories;
-             fatGoal = 0.25 * requiredCalories;
-             carbsGoal = 0.4 * requiredCalories;
+            proteinGoal = 0.35 * requiredCalories;
+            fatGoal = 0.25 * requiredCalories;
+            carbsGoal = 0.4 * requiredCalories;
         }
         // Check if the goal is to gain weight without building muscle
         else // ((goalWeight > weight) && !buildMuscle)
-            // Set the macros for gaining weight without building muscle
+        // Set the macros for gaining weight without building muscle
         {
             proteinGoal = 0.3 * requiredCalories;
             fatGoal = 0.35 * requiredCalories;

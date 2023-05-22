@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#232222">
 
     <!-- Home Label -->
     <TextView
@@ -106,7 +106,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:padding="16dp"
         android:text="Activity"
         android:textColor="#ffffff"
         android:textStyle="bold"
@@ -121,7 +120,7 @@
         android:max="100"
         android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/activityHeading"
         app:layout_constraintTop_toBottomOf="@id/activityHeading" />
 
     <Button
@@ -186,4 +185,3 @@
         app:layout_constraintTop_toBottomOf="@id/nextPageButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
