@@ -11,19 +11,20 @@ import android.widget.Toast;
 public class UpdateCalorie extends AppCompatActivity {
 
     private Button doneBtn, cancelBtn;
-    private EditText ETCalo, ETProtein, ETCarbs, ETFat;
+    private EditText ETCalo, ETProtein ,ETFat, ETCarbs;
+
     private String caloriesValue, proteinValue, carbsValue, fatValue;
-    private Double requiredProtein, requiredFat, requiredCarbs, requiredCalories,
-            Protein, Fat, Carbs, Calories, CaloriesInput, PInput, CInput, FInput;
+    private int requiredProtein , requiredFat, requiredCarbs, requiredCalories ,
+            Protein, Fat, Carbs, Calories, CaloriesInput, PInput, FInput,CInput;
 
-    public void CalculateMacros(Double MealCalories, Double MealCarbs, Double MealProtein, Double MealFat) {
-        Double ProteinRatio = MealProtein / 100;
-        Double FatRatio = MealFat / 100;
-        Double CarbsRatio = MealCarbs / 100;
+    public void CalculateMacros(int MealCalories, int MealCarbs, int MealProtein, int MealFat) {
+        int ProteinRatio = MealProtein / 100;
+        int FatRatio = MealFat / 100;
+        int CarbsRatio = MealCarbs / 100;
 
-        Double PResult = MealCalories * ProteinRatio;
-        Double FResult = MealCalories * FatRatio;
-        Double CResult = MealCalories * CarbsRatio;
+        int PResult = MealCalories * ProteinRatio;
+        int FResult = MealCalories * FatRatio;
+        int CResult = MealCalories * CarbsRatio;
 
         Protein = requiredProtein - PResult;
         Fat = requiredFat - FResult;
@@ -38,11 +39,10 @@ public class UpdateCalorie extends AppCompatActivity {
 
         doneBtn = findViewById(R.id.Done_Button);
         cancelBtn = findViewById(R.id.Cancel_Button);
-
         ETCalo = findViewById(R.id.CaloriesInput);
         ETProtein = findViewById(R.id.PInput);
-        ETFat = findViewById(R.id.CInput);
-        ETCarbs = findViewById(R.id.FInput);
+        ETFat = findViewById(R.id.FInput);
+        ETCarbs = findViewById(R.id.CInput);
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +55,7 @@ public class UpdateCalorie extends AppCompatActivity {
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //.trim();
                 caloriesValue = ETCalo.getText().toString().trim();
                 proteinValue = ETProtein.getText().toString().trim();
                 carbsValue = ETCarbs.getText().toString().trim();
@@ -66,21 +67,22 @@ public class UpdateCalorie extends AppCompatActivity {
                 }
 
                 try {
-                    CaloriesInput = Double.parseDouble(caloriesValue);
-                    PInput = Double.parseDouble(proteinValue);
-                    CInput = Double.parseDouble(carbsValue);
-                    FInput = Double.parseDouble(fatValue);
+
+                    CaloriesInput = Integer.parseInt(caloriesValue);
+                    PInput = Integer.parseInt(proteinValue);
+                    CInput = Integer.parseInt(carbsValue);
+                    FInput = Integer.parseInt(fatValue);
 
                     Intent HomeIntent = getIntent();
-                    String requiredCaloriesString = HomeIntent.getStringExtra("requiredCalories");
-                    String requiredCarbsString = HomeIntent.getStringExtra("requiredCarbs");
-                    String requiredProteinString = HomeIntent.getStringExtra("requiredProtein");
-                    String requiredFatString = HomeIntent.getStringExtra("requiredFat");
+                    String requiredCaloriesString = HomeIntent.getStringExtra("RequiredCalories");
+                    String requiredCarbsString = HomeIntent.getStringExtra("RequiredCarbs");
+                    String requiredProteinString = HomeIntent.getStringExtra("RequiredProtein");
+                    String requiredFatString = HomeIntent.getStringExtra("RequiredFat");
 
-                    requiredCalories = Double.parseDouble(requiredCaloriesString);
-                    requiredCarbs = Double.parseDouble(requiredCarbsString);
-                    requiredFat = Double.parseDouble(requiredFatString);
-                    requiredProtein = Double.parseDouble(requiredProteinString);
+                    requiredCalories = 500;
+                    requiredCarbs = 50;
+                    requiredFat = 25;
+                    requiredProtein = 25;
 
                     CalculateMacros(CaloriesInput, CInput, PInput, FInput);
 
@@ -91,6 +93,7 @@ public class UpdateCalorie extends AppCompatActivity {
                     updateCaloriesIntent.putExtra("Fat", Fat);
                     updateCaloriesIntent.putExtra("Carbs", Carbs);
                     updateCaloriesIntent.putExtra("Calories", Calories);
+
                     startActivity(updateCaloriesIntent);
                 } catch (NumberFormatException e) {
                     Toast.makeText(UpdateCalorie.this, "Invalid macro values", Toast.LENGTH_SHORT).show();
@@ -99,4 +102,6 @@ public class UpdateCalorie extends AppCompatActivity {
         });
 
     }
+
 }
+

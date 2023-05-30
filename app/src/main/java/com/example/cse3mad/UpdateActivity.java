@@ -133,9 +133,9 @@ public class UpdateActivity extends AppCompatActivity {
         activitySpinner.setAdapter(ActivityTypeAdapter);
 
 
-        Duration = Double.parseDouble(DurationInput);
-        activityType = activitySpinner.getSelectedItem().toString();
-        activityIntensity = intensitySpinner.getSelectedItem().toString();
+        //Duration = 40//Double.parseDouble(DurationInput);
+        //activityType ;//activitySpinner.getSelectedItem().toString();
+        //activityIntensity = High//intensitySpinner.getSelectedItem().toString();
 
 
         Intent getHomeIntent = getIntent();
@@ -166,7 +166,7 @@ public class UpdateActivity extends AppCompatActivity {
                 String ActivityOption = activitySpinner.getSelectedItem().toString();
                 int ActivityInput = Integer.parseInt(intensityOption);
 
-                CalculateActivity();
+                //CalculateActivity();
 
                 // Toast will let the user know when the changes have been updated
                 Toast.makeText(UpdateActivity.this, " updated! ", Toast.LENGTH_SHORT).show();

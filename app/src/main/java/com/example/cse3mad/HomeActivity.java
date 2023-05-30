@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Double height, weight,  goalWeight ,
             requiredCalories, proteinGoal, fatGoal, carbsGoal, calorieDeficit, waterGoal;
-    private int age, intensity ;
+    private int age, intensity;
     private boolean buildMuscle;
 
     @Override
@@ -33,6 +33,9 @@ public class HomeActivity extends AppCompatActivity {
         // Retrieve the name from the intent extras
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
+
+
+
 
         // Find the welcomeText TextView by its ID
         helloText = findViewById(R.id.helloText);
@@ -49,8 +52,8 @@ public class HomeActivity extends AppCompatActivity {
         activityProgressBar = findViewById(R.id.activityProgressBar);
 
         // Set progress values for the progress bars
-        caloriesProgressBar.setProgress(70);
-        waterProgressBar.setProgress(50);
+        caloriesProgressBar.setProgress(30);
+        waterProgressBar.setProgress(40);
         activityProgressBar.setProgress(80);
 
         // Find the buttons by their IDs
@@ -146,20 +149,20 @@ public class HomeActivity extends AppCompatActivity {
             carbsGoal = 0.4 * requiredCalories;
         }
         // Check if the goal is to lose weight without building muscle
-        else if ((goalWeight < weight) && !buildMuscle) {
+     //   else if ((goalWeight < weight) && !buildMuscle) {
             // Set the macros for losing weight without building muscle
-            proteinGoal = 0.35 * requiredCalories;
-            fatGoal = 0.25 * requiredCalories;
-            carbsGoal = 0.4 * requiredCalories;
-        }
+       //     proteinGoal = 0.35 * requiredCalories;
+        //    fatGoal = 0.25 * requiredCalories;
+        //    carbsGoal = 0.4 * requiredCalories;
+        //}
         // Check if the goal is to gain weight without building muscle
-        else // ((goalWeight > weight) && !buildMuscle)
+      //  else // ((goalWeight > weight) && !buildMuscle)
         // Set the macros for gaining weight without building muscle
-        {
-            proteinGoal = 0.3 * requiredCalories;
-            fatGoal = 0.35 * requiredCalories;
-            carbsGoal = 0.35 * requiredCalories;
-        }
+     //   {
+          //  proteinGoal = 0.3 * requiredCalories;
+          //  fatGoal = 0.35 * requiredCalories;
+          //  carbsGoal = 0.35 * requiredCalories;
+      //  }
 
         // Adjust the calorie goal based on the intensity of exercise
         if (intensity == 2) {
