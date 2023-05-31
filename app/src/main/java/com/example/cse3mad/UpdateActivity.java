@@ -102,11 +102,11 @@ public class UpdateActivity extends AppCompatActivity {
     {
         if (activityType == "Strength")
         {
-            CalculateStrength();
+           // CalculateStrength();
         }
         else if (activityType == "Cardio")
         {
-            CalculateCardio();
+           // CalculateCardio();
         }
     }
 
@@ -115,7 +115,7 @@ public class UpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        // declaring variables & Buttons and setting them to the relevant views by Id
+        //declaring variables & Buttons and setting them to the relevant views by Id
         intensitySpinner = findViewById(R.id.IntensitySpinner);
         activitySpinner = findViewById(R.id.activityTypeSpinner);
         DurationInput  = findViewById(R.id.durationInput).toString();
@@ -125,7 +125,7 @@ public class UpdateActivity extends AppCompatActivity {
         String[] IntensityOptions = getResources().getStringArray(R.array.Intensity);
         ArrayAdapter IntensityAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, IntensityOptions);
         IntensityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        intensitySpinner.setAdapter(IntensityAdapter);
+       intensitySpinner.setAdapter(IntensityAdapter);
 
         String[] ActivityTypeOptions = getResources().getStringArray(R.array.activityType);
         ArrayAdapter ActivityTypeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, ActivityTypeOptions);
@@ -133,20 +133,20 @@ public class UpdateActivity extends AppCompatActivity {
         activitySpinner.setAdapter(ActivityTypeAdapter);
 
 
-        //Duration = 40//Double.parseDouble(DurationInput);
-        //activityType ;//activitySpinner.getSelectedItem().toString();
-        //activityIntensity = High//intensitySpinner.getSelectedItem().toString();
+         Duration = Double.parseDouble(DurationInput);
+        activityType = activitySpinner.getSelectedItem().toString();
+        activityIntensity = intensitySpinner.getSelectedItem().toString();
 
 
-        Intent getHomeIntent = getIntent();
-        String ageData = getHomeIntent.getStringExtra("dob");
-        String weightData = getHomeIntent.getStringExtra("weight");
-        String RequiredDeficitData = getHomeIntent.getStringExtra("calorieDeficit");
+        //Intent getHomeIntent = getIntent();
+        //String ageData = getHomeIntent.getStringExtra("dob");
+        //String weightData = getHomeIntent.getStringExtra("weight");
+       // String RequiredDeficitData = getHomeIntent.getStringExtra("calorieDeficit");
 
 
-        age = Integer.parseInt(ageData);
-        weight = Double.parseDouble(weightData);
-        RequiredDeficit = Double.parseDouble(RequiredDeficitData);
+        age = 20;//Integer.parseInt(ageData);
+        weight = 65.00;// Double.parseDouble(weightData);
+        RequiredDeficit = 1500.00;//= Double.parseDouble(RequiredDeficitData);
 
         //cancel button will just go back to home page
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -160,25 +160,25 @@ public class UpdateActivity extends AppCompatActivity {
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String intensityOption = intensitySpinner.getSelectedItem().toString();
-                int IntensityInput = Integer.parseInt(intensityOption);
+              //String intensityOption = intensitySpinner.getSelectedItem().toString();
+               // int IntensityInput = Integer.parseInt(intensityOption);
 
-                String ActivityOption = activitySpinner.getSelectedItem().toString();
-                int ActivityInput = Integer.parseInt(intensityOption);
+              //  String ActivityOption = activitySpinner.getSelectedItem().toString();
+               // int ActivityInput = Integer.parseInt(intensityOption);
 
                 //CalculateActivity();
 
                 // Toast will let the user know when the changes have been updated
-                Toast.makeText(UpdateActivity.this, " updated! ", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(UpdateActivity.this, " updated! ", Toast.LENGTH_SHORT).show();
 
                 //intent to go into home page after updating
-                Intent updateActivityIntent = new Intent(UpdateActivity.this, HomeActivity.class);
+              //  Intent updateActivityIntent = new Intent(UpdateActivity.this, HomeActivity.class);
 
                 // pass input onto home activity
-                updateActivityIntent.putExtra("activityType", activityType);
-                updateActivityIntent.putExtra("Intensity", intensity);
-                updateActivityIntent.putExtra("CurrentActivity", CurrentActivity);
-                startActivity(updateActivityIntent);
+               // updateActivityIntent.putExtra("activityType", activityType);
+               // updateActivityIntent.putExtra("Intensity", intensity);
+                //updateActivityIntent.putExtra("CurrentActivity", CurrentActivity);
+                //startActivity(updateActivityIntent);
             }
         });
     }
