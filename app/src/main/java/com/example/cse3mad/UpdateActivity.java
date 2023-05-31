@@ -116,26 +116,25 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
 
         //declaring variables & Buttons and setting them to the relevant views by Id
-        intensitySpinner = findViewById(R.id.IntensitySpinner);
-        activitySpinner = findViewById(R.id.activityTypeSpinner);
+//        activitySpinner = findViewById(R.id.activityTypeSpinner);
         DurationInput  = findViewById(R.id.durationInput).toString();
         doneBtn = findViewById(R.id.Done_Button);
         cancelBtn = findViewById(R.id.Cancel_Button);
+//
+//        String[] IntensityOptions = getResources().getStringArray(R.array.Intensity);
+//        ArrayAdapter IntensityAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, IntensityOptions);
+//        IntensityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+//        intensitySpinner.setAdapter(IntensityAdapter);
+//
+//        String[] ActivityTypeOptions = getResources().getStringArray(R.array.activityType);
+//        ArrayAdapter ActivityTypeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, ActivityTypeOptions);
+//        IntensityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+//        activitySpinner.setAdapter(ActivityTypeAdapter);
 
-        String[] IntensityOptions = getResources().getStringArray(R.array.Intensity);
-        ArrayAdapter IntensityAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, IntensityOptions);
-        IntensityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-       intensitySpinner.setAdapter(IntensityAdapter);
 
-        String[] ActivityTypeOptions = getResources().getStringArray(R.array.activityType);
-        ArrayAdapter ActivityTypeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, ActivityTypeOptions);
-        IntensityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        activitySpinner.setAdapter(ActivityTypeAdapter);
-
-
-         Duration = Double.parseDouble(DurationInput);
-        activityType = activitySpinner.getSelectedItem().toString();
-        activityIntensity = intensitySpinner.getSelectedItem().toString();
+        //Duration = Double.parseDouble(DurationInput);
+       // activityType = activitySpinner.getSelectedItem().toString();
+       // activityIntensity = intensitySpinner.getSelectedItem().toString();
 
 
         //Intent getHomeIntent = getIntent();
@@ -169,16 +168,16 @@ public class UpdateActivity extends AppCompatActivity {
                 //CalculateActivity();
 
                 // Toast will let the user know when the changes have been updated
-               // Toast.makeText(UpdateActivity.this, " updated! ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateActivity.this, " updated! ", Toast.LENGTH_SHORT).show();
 
                 //intent to go into home page after updating
-              //  Intent updateActivityIntent = new Intent(UpdateActivity.this, HomeActivity.class);
+              Intent updateActivityIntent = new Intent(UpdateActivity.this, HomeActivity.class);
 
                 // pass input onto home activity
                // updateActivityIntent.putExtra("activityType", activityType);
                // updateActivityIntent.putExtra("Intensity", intensity);
                 //updateActivityIntent.putExtra("CurrentActivity", CurrentActivity);
-                //startActivity(updateActivityIntent);
+                startActivity(updateActivityIntent);
             }
         });
     }
